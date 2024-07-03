@@ -7,7 +7,7 @@ import '@fontsource/roboto/700.css';
 import "./globals.css";
 import Container from '@mui/material/Container';
 import { AppHeader } from "./_components/AppHeader/AppHeader";
-
+import './i18';
 
 export default function RootLayout({
   children,

@@ -1,0 +1,10 @@
+{
+    "inventory": "Inventory",
+    "product": "Product",
+    "products": "Products",
+    "list-of-products": "List of products",
+    "name": "Name",
+    "id": "ID",
+    "price": "Price",
+    "logout": "Log out"
+}

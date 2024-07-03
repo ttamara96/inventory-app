@@ -1,26 +1,27 @@
+"use client";
+import { useState } from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
+
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import InventoryIcon from '@mui/icons-material/Inventory';
 
-const pages = [
-    {path: '/products', label: 'Products' }
-];
-const settings = ['Logout'];
+import { useTranslation } from 'react-i18next';
 
 export const AppHeader = () => {
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+    const { t } = useTranslation();
   
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
       setAnchorElNav(event.currentTarget);
@@ -37,6 +38,13 @@ export const AppHeader = () => {
       setAnchorElUser(null);
     };
   
+    const pages = [
+        {path: '/products', label: t('products') }
+    ];
+
+    const settings = [
+        {value: 'Logout', label: t('logout') }
+    ];
 
     return <AppBar position="static">
         <Container maxWidth="xl">
@@ -44,21 +52,21 @@ export const AppHeader = () => {
             
                 <InventoryIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                 <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                    mr: 2,
-                    display: { xs: 'none', md: 'flex' },
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    letterSpacing: '.3rem',
-                    color: 'inherit',
-                    textDecoration: 'none',
-                }}
-                >
-                Inventory
+                    variant="h6"
+                    noWrap
+                    component="a"
+                    href="/"
+                    sx={{
+                        mr: 2,
+                        display: { xs: 'none', md: 'flex' },
+                        fontFamily: 'monospace',
+                        fontWeight: 700,
+                        letterSpacing: '.3rem',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                    }}
+                    >
+                    {t("inventory")}
                 </Typography>
 
                 <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -99,22 +107,22 @@ export const AppHeader = () => {
                 </Box>
                 <InventoryIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                 <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                    mr: 2,
-                    display: { xs: 'flex', md: 'none' },
-                    flexGrow: 1,
-                    fontFamily: 'monospace',
-                    fontWeight: 700,
-                    letterSpacing: '.3rem',
-                    color: 'inherit',
-                    textDecoration: 'none',
-                }}
-                >
-                Inventory
+                    variant="h5"
+                    noWrap
+                    component="a"
+                    href="/"
+                    sx={{
+                        mr: 2,
+                        display: { xs: 'flex', md: 'none' },
+                        flexGrow: 1,
+                        fontFamily: 'monospace',
+                        fontWeight: 700,
+                        letterSpacing: '.3rem',
+                        color: 'inherit',
+                        textDecoration: 'none',
+                    }}
+                    >
+                    {t("inventory")}
                 </Typography>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
@@ -152,8 +160,8 @@ export const AppHeader = () => {
                     onClose={handleCloseUserMenu}
                 >
                     {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
+                    <MenuItem key={setting.value} onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">{setting.label}</Typography>
                     </MenuItem>
                     ))}
                 </Menu>

@@ -1,22 +1,25 @@
+"use client";
 import { Product } from "@inventory/inventory-api/src/gql/graphql";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
+import { useTranslation } from 'react-i18next';
 
  const ProductList = () => {
+   const { t } = useTranslation();
     const columns: GridColDef<(typeof rows)[number]>[] = [
         { field: 'id', 
-          headerName: 'ID',
+          headerName: t('id'),
           flex: 0.2
         },
         {
           field: 'name',
-          headerName: 'Name',
+          headerName: t('name'),
           editable: true,
           flex: 0.5
         },
         {
           field: 'price',
-          headerName: 'Price',
+          headerName: t('price'),
           editable: true,
           flex: 0.3
         }
@@ -30,8 +33,11 @@ import Typography from '@mui/material/Typography';
       ];
 
     return <>
-        <Typography variant="h2" my={4}>
-            List of Products
+        <Typography 
+          variant="h2" 
+          my={4} 
+          >
+          {t('list-of-products')}
         </Typography>
         <DataGrid
             columns={columns}
