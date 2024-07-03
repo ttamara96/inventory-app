@@ -13,8 +13,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import InventoryIcon from '@mui/icons-material/Inventory';
 
-
-const pages = ['Products'];
+const pages = [
+    {path: '/products', label: 'Products' }
+];
 const settings = ['Logout'];
 
 export const AppHeader = () => {
@@ -46,7 +47,7 @@ export const AppHeader = () => {
                 variant="h6"
                 noWrap
                 component="a"
-                href="#"
+                href="/"
                 sx={{
                     mr: 2,
                     display: { xs: 'none', md: 'flex' },
@@ -90,8 +91,8 @@ export const AppHeader = () => {
                     }}
                 >
                     {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
+                    <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">{page.label}</Typography>
                     </MenuItem>
                     ))}
                 </Menu>
@@ -101,7 +102,7 @@ export const AppHeader = () => {
                 variant="h5"
                 noWrap
                 component="a"
-                href="#"
+                href="/"
                 sx={{
                     mr: 2,
                     display: { xs: 'flex', md: 'none' },
@@ -118,11 +119,12 @@ export const AppHeader = () => {
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
                     <Button
-                    key={page}
+                    key={page.label}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}
+                    href={page.path}
                     >
-                    {page}
+                    {page.label}
                     </Button>
                 ))}
                 </Box>
