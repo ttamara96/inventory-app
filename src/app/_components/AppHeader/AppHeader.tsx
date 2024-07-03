@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import Link from '@mui/material/Link';
 
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -59,9 +60,8 @@ export const AppHeader = () => {
                     sx={{
                         mr: 2,
                         display: { xs: 'none', md: 'flex' },
-                        fontFamily: 'monospace',
                         fontWeight: 700,
-                        letterSpacing: '.3rem',
+                        letterSpacing: '.2rem',
                         color: 'inherit',
                         textDecoration: 'none',
                     }}
@@ -84,23 +84,30 @@ export const AppHeader = () => {
                     id="menu-appbar"
                     anchorEl={anchorElNav}
                     anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
+                        vertical: 'bottom',
+                        horizontal: 'left',
                     }}
                     keepMounted
                     transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
+                        vertical: 'top',
+                        horizontal: 'left',
                     }}
                     open={Boolean(anchorElNav)}
                     onClose={handleCloseNavMenu}
                     sx={{
-                    display: { xs: 'block', md: 'none' },
+                        display: { xs: 'block', md: 'none' },
                     }}
                 >
                     {pages.map((page) => (
                     <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                        <Link  
+                            href={page.path}          
+                            sx={{
+                                color: 'inherit',
+                                textDecoration: 'none'
+                            }} >
                         <Typography textAlign="center">{page.label}</Typography>
+                        </Link>
                     </MenuItem>
                     ))}
                 </Menu>
@@ -115,9 +122,8 @@ export const AppHeader = () => {
                         mr: 2,
                         display: { xs: 'flex', md: 'none' },
                         flexGrow: 1,
-                        fontFamily: 'monospace',
                         fontWeight: 700,
-                        letterSpacing: '.3rem',
+                        letterSpacing: '.2rem',
                         color: 'inherit',
                         textDecoration: 'none',
                     }}
@@ -140,7 +146,7 @@ export const AppHeader = () => {
                 <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar />
                     </IconButton>
                 </Tooltip>
                 <Menu
