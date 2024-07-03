@@ -1,8 +1,12 @@
+"use client"
+
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import "./globals.css";
+import Container from '@mui/material/Container';
+import { AppHeader } from "./_components/AppHeader/AppHeader";
 
 
 export default function RootLayout({
@@ -24,7 +28,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AppHeader />
+        <Container maxWidth="xl">
+          {children}
+        </Container>
+      </body>
+
     </html>
   )
 }
