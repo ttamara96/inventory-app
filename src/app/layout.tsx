@@ -7,6 +7,8 @@ import '@fontsource/roboto/700.css';
 import "./globals.css";
 import Container from '@mui/material/Container';
 import { AppHeader } from "./_components/AppHeader/AppHeader";
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../../theme';
 import './i18';
 
 export default function RootLayout({
@@ -29,12 +31,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AppHeader />
-        <Container maxWidth="xl">
-          {children}
-        </Container>
+        <ThemeProvider theme={theme}>
+          <AppHeader />
+          <Container maxWidth="xl">
+            {children}
+          </Container>
+        </ThemeProvider>
       </body>
-
     </html>
   )
 }
