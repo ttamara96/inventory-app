@@ -6,5 +6,10 @@
     "name": "Name",
     "id": "ID",
     "price": "Price",
-    "logout": "Log out"
+    "logout": "Log out",
+    "new-product": "New Product",
+    "save": "Save",
+    "cancel": "Cancel",
+    "product-name": "Product Name",
+    "fields-with-*-required": "Fields marked with * are required."
 }

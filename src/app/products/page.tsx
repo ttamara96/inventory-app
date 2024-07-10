@@ -1,10 +1,12 @@
 "use client";
 import { Product } from "@inventory/inventory-api/src/gql/graphql";
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import { getProductsHandler } from "./products.service";
 import { useEffect, useState } from "react";
+import Stack from "@mui/material/Stack";
+import { ProductFormDialog } from "../_components/ProductFormDialog/ProductFormDialog";
 
  const ProductList = () => {
     const { t } = useTranslation();
@@ -17,13 +19,11 @@ import { useEffect, useState } from "react";
         {
           field: 'name',
           headerName: t('name'),
-          editable: true,
           flex: 0.5
         },
         {
           field: 'price',
           headerName: t('price'),
-          editable: true,
           flex: 0.3
         }
     ];
@@ -40,15 +40,23 @@ import { useEffect, useState } from "react";
     }, []);
 
     return <>
-        <Typography 
-          variant="h2" 
-          my={4} 
-          >
-          {t('list-of-products')}
-        </Typography>
+        <Stack 
+          direction={{ xs: 'column', sm: 'row' }} 
+          justifyContent="space-between"
+          alignItems="center" 
+          my={2}>
+          <Typography 
+            variant="h2" 
+            my={2}>
+            {t('list-of-products')}
+          </Typography>
+          <ProductFormDialog openDialogLabel={t('new-product')}></ProductFormDialog>
+        </Stack>
         <DataGrid
-            columns={columns}
-            rows={products}>
+          autoHeight
+          columns={columns}
+          rows={products}
+          slots={{ toolbar: GridToolbar }}>
         </DataGrid>
     </>
 

@@ -6,5 +6,10 @@
     "name": "Név",
     "id": "Azonosító",
     "price": "Ár",
-    "logout": "Kijelentkezés"
+    "logout": "Kijelentkezés",
+    "new-product": "Új Termék",
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "product-name": "Termék neve",
+    "fields-with-*-required": "A *-gal jelölt mezők kitöltése kötelező."
 }
