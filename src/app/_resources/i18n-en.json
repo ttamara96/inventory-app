@@ -11,5 +11,8 @@
     "save": "Save",
     "cancel": "Cancel",
     "product-name": "Product Name",
-    "fields-with-*-required": "Fields marked with * are required."
+    "fields-with-*-required": "Fields marked with * are required.",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete"
 }

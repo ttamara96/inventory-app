@@ -1,12 +1,14 @@
 "use client";
 import { Product } from "@inventory/inventory-api/src/gql/graphql";
-import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar, GridActionsCellItem, GridRowId } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import { getProductsHandler } from "./products.service";
 import { useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
 import { ProductFormDialog } from "../_components/ProductFormDialog/ProductFormDialog";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
  const ProductList = () => {
     const { t } = useTranslation();
@@ -25,8 +27,43 @@ import { ProductFormDialog } from "../_components/ProductFormDialog/ProductFormD
           field: 'price',
           headerName: t('price'),
           flex: 0.3
-        }
-    ];
+        },
+        {
+          field: 'actions',
+          type: 'actions',
+          headerName: t('actions'),
+          width: 100,
+          cellClassName: 'actions',
+          getActions: ({ id }) => {
+            return [ <>
+              <GridActionsCellItem
+                icon={<EditIcon />}
+                label="Edit"
+                onClick={() => handleEditClick(id)}
+                className="textPrimary"
+                color="inherit"
+                title={t("edit")}
+              />
+              <GridActionsCellItem
+                icon={<DeleteIcon/>}
+                onClick={() => handleDeleteClick(id)}
+                label="Delete"
+                color="inherit"
+                title={t("delete")}
+              />
+            </>
+            ];
+          },
+        },
+      ]
+
+    const handleEditClick = (id: GridRowId) => {
+      //To open Product Dialog with the data of the current product
+    }
+     
+    const handleDeleteClick = (id: GridRowId) => {
+      //To open a confirm delete dialog 
+    }
 
     const getProducts = async () => {
       const productsResponse = await getProductsHandler();

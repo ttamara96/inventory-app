@@ -11,5 +11,8 @@
     "save": "Mentés",
     "cancel": "Mégse",
     "product-name": "Termék neve",
-    "fields-with-*-required": "A *-gal jelölt mezők kitöltése kötelező."
+    "fields-with-*-required": "A *-gal jelölt mezők kitöltése kötelező.",
+    "actions": "Műveletek",
+    "edit": "Szerkesztés",
+    "delete": "Törlés"
 }
